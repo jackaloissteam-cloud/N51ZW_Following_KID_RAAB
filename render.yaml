@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: n51zw-live-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DB_NAME
+        value: n51zw_live
+      - key: TRACKED_ICAO24
+        value: a6616a
+      - key: TRACKED_REGISTRATION
+        value: N51ZW
+      - key: DEFAULT_POLL_INTERVAL
+        value: 300
+      - key: SIGNAL_TIMEOUT_SECONDS
+        value: 600
+      - key: MONGO_URL
+        sync: false
